@@ -2,11 +2,21 @@ clc
 clear
 close all
 
-
-
+K = 3;
 PCTtraining = 0.80;
 PCTvalidation = 0.10;
 PCTtest = 0.10;
+
+
+[inputs,targets,classnames] = load_input_dataset();
+%Show first image
+%figure;
+%imshow(inputs{1})
+[NImages,SizesImage,inputs_matrix,NChannels,Inputs_Net,Labels_Num,NLabels] = prepare_input(inputs, targets);
+[Inputs_Train,Labels_Train,idxTrain,Inputs_Valid,Labels_Valid,idxValid,Inputs_Test,Labels_Test,idxTest] = dataset_partition(Inputs_Net,Labels_Num,PCTtraining,PCTvalidation,PCTtest);
+
+
+
 
 architecture = [
  imageInputLayer([SizesImage(1), SizesImage(2), NChannels])
@@ -19,7 +29,7 @@ architecture = [
 ];
 
 optimizationSolver = ...
- trainingOptions('adam', ... %'sgdm' | 'rmsprop' | 'adam' | 'lbfgs'
+ trainingOptions('sgdm', ... %'sgdm' | 'rmsprop' | 'adam' | 'lbfgs'
  'InitialLearnRate', 0.01, ... %Defalut value: 0.01
  'Momentum', 0.9, ... %Defalut value: 0.9000
  'L2Regularization', 1.0000e-04, ... %Defalut value: 1.0000e-0
