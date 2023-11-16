@@ -8,7 +8,6 @@ Acc_Test_v = zeros(1,K);
 for i=1:K 
     [Acc_Train,Acc_Valid,Acc_Test] = exec_CNN(PCTtraining,PCTvalidation,PCTtest,architecture,optimizationSolver);
     Acc_Train_v(i) = Acc_Train;
-    Acc_Valid
     Acc_Valid_v(i) = Acc_Valid;
     Acc_Test_v(i) = Acc_Test;
 end

@@ -40,8 +40,12 @@ optimizationSolver = ...
  'ValidationFrequency', 50, ... %Defalut value: 50
  'ValidationPatience', 5, ... %Defalut value: 5
  'Shuffle', 'once', ... %Defalut value: 'once'
- 'Plots', 'training-progress' ... %Defalut value: 'none'
+ 'Plots', 'none'... %'training-progress' ... %Defalut value: 'none'
  );
 
 [mean_Acc_Train,mean_Acc_Valid,mean_Acc_Test] = mean_accuracy(K,PCTtraining,PCTvalidation,PCTtest,architecture,optimizationSolver);
 
+fprintf('\n Final results \n');
+fprintf('Training set Accuracy: %.2f%% \n',mean_Acc_Train*100);
+fprintf('Validation set Accuracy: %.2f%% \n',mean_Acc_Valid*100);
+fprintf('Test set Accuracy: %.2f%% \n',mean_Acc_Test*100);
