@@ -18,10 +18,5 @@ Inputs_Net = reshape(inputs_matrix,[SizesImage(1), SizesImage(2), NChannels, NIm
 Labels_Num = targets; % Numeric coding scheme
 NLabels = numel(unique(Labels_Num));
 %% Number of examples of every class
-[Nc,~]=hist(Labels_Num,unique(Labels_Num));
 
-figure;
-histogram(Labels_Num,unique(Labels_Num)); %plot histogram
-fprintf('Number of examples in every of the %d classes (%d):',numel(Nc),sum(Nc));
-for n=Nc, fprintf(' %d',n); end; fprintf('\n');
 end

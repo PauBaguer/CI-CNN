@@ -1,4 +1,4 @@
-function [Inputs_Train,Labels_Train,Inputs_Valid,Labels_Valid,Inputs_Test,Labels_Test] = dataset_partition(Inputs_Net,Labels_Num,PCTtraining,PCTvalidation,PCTtest)
+function [Inputs_Train,Labels_Train,idxTrain,Inputs_Valid,Labels_Valid,idxValid,Inputs_Test,Labels_Test,idxTest] = dataset_partition(Inputs_Net,Labels_Num,PCTtraining,PCTvalidation,PCTtest)
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -34,5 +34,35 @@ Labels_Test = categorical(Labels_Num_NonTrain(idxTest));
 fprintf('Number of examples in the training set: %d\n',size(Inputs_Train,4));
 fprintf('Number of examples in the validation set: %d\n',size(Inputs_Valid,4));
 fprintf('Number of examples in the test set: %d\n',size(Inputs_Test,4));
+
+
+[Nc,~]=hist(Labels_Num,unique(Labels_Num));
+figure;
+subplot(2,2,1);
+histogram(Labels_Num,unique(Labels_Num)); %plot histogram
+title('Complete dataset histogram');
+fprintf('Number of examples in every of the %d classes (%d):',numel(Nc),sum(Nc));
+for n=Nc, fprintf(' %d',n); end; fprintf('\n');
+
+[Nc,~]=hist(Labels_Train,unique(Labels_Train));
+subplot(2,2,2);
+histogram(double(Labels_Train),unique(double(Labels_Train))); %plot histogram
+title('Training set histogram')
+fprintf('Number of examples in validation set in every of the %d classes (%d):',numel(Nc),sum(Nc));
+for n=Nc, fprintf(' %d',n); end; fprintf('\n');
+
+[Nc,~]=hist(Labels_Valid,unique(Labels_Valid));
+subplot(2,2,3);
+histogram(double(Labels_Valid),unique(double(Labels_Valid))); %plot shistogram
+title('Validation set histogram')
+fprintf('Number of examples in test set in every of the %d classes (%d):',numel(Nc),sum(Nc));
+for n=Nc, fprintf(' %d',n); end; fprintf('\n');
+
+[Nc,~]=hist(Labels_Test,unique(Labels_Test));
+subplot(2,2,4);
+histogram(double(Labels_Test),unique(double(Labels_Test))); %plot histogram
+title('Test set histogram')
+fprintf('Number of examples in training set in every of the %d classes (%d):',numel(Nc),sum(Nc));
+for n=Nc, fprintf(' %d',n); end; fprintf('\n');
 
 end
