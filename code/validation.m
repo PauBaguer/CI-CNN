@@ -1,4 +1,4 @@
-function [Acc_Train,Acc_Valid,Acc_Test] = validation(net,Inputs_Train,Labels_Train,Inputs_Valid,Labels_Valid,Inputs_Test,Labels_Test)
+function [Acc_Train,Acc_Valid,Acc_Test] = validation(net,Inputs_Train,Labels_Train,idxTrain,Inputs_Valid,Labels_Valid,idxValid,Inputs_Test,Labels_Test,idxTest)
 %VALIDATION Summary of this function goes here
 %   Detailed explanation goes here
 
