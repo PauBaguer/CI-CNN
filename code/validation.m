@@ -15,9 +15,10 @@ Acc_Train = sum(vec2ind(Predictions_Train') == Labels_Num_Train) / sum(idxTrain)
 Acc_Valid = sum(vec2ind(Predictions_Valid') == Labels_Num_Valid) / sum(idxValid);
 Acc_Test = sum(vec2ind(Predictions_Test') == Labels_Num_Test) / sum(idxTest);
 
-fprintf('Training set Accuracy: %d\n',Acc_Train);
-fprintf('Validation set Accuracy: %d\n',Acc_Valid);
-fprintf('Test set Accuracy: %d\n',Acc_Test);
+
+% fprintf('Training set Accuracy: %.2f%% \n',Acc_Train*100);
+% fprintf('Validation set Accuracy: %.2f%% \n',Acc_Valid*100);
+% fprintf('Test set Accuracy: %.2f%% \n',Acc_Test*100);
 
 end
 
